@@ -10,7 +10,7 @@ git clone https://github.com/jultty/skolar "$HOME/.local/share/typst/packages/lo
 
 ## Usage
 
-Just add `#import "@local/skolar:0.1.0": *` do the head of your document and provide a properties dictionary to the `gen_doc` function:
+Just add `#import "@local/skolar:0.1.0": *` to the head of your document and provide a properties dictionary to the `gen_doc` function:
 
 ```typst
 #import "@local/skolar:0.1.0": *
@@ -30,7 +30,7 @@ Just add `#import "@local/skolar:0.1.0": *` do the head of your document and pro
 ]
 ```
 
-See the [`demo.typ`](demo/demo.typ) file for a working example.
+See the [demo](demo) for a working example.
 
 ---
 For now, this template still has some hard-coded values that are specific to the São Paulo Federal Institute's Jacareí campus.
