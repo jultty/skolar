@@ -1,4 +1,4 @@
-#import "@local/skolar:0.1.0": *
+#import "@local/skolar:0.2.0": *
 
 #let meta = (
   title: "Projeto de Jogo: Nefthera",
