@@ -10,18 +10,18 @@ git clone https://github.com/jultty/skolar "$HOME/.local/share/typst/packages/lo
 
 ## Usage
 
-Just add `#import "@local/skolar:0.2.0": *` to the head of your document and provide a properties dictionary to the `gen_doc` function:
+Just add `#import "@local/skolar:0.2.0": *` to the head of your document and provide a properties dictionary to the `generate_document` function:
 
 ```typst
 #import "@local/skolar:0.2.0": *
 
-#let meta = (
+#let my_properties = (
   title: "Exercise: The Proxy Pattern",
   author: "Juno Takano",
   course: "Software Architecture and Development",
 )
 
-#gen_doc(properties: meta)[
+#generate_document(properties: my_properties)[
 
     // your content here
 
@@ -30,7 +30,7 @@ Just add `#import "@local/skolar:0.2.0": *` to the head of your document and pro
 
 See the [demo](demo) for a working example.
 
-This is the full schema of properties you can pass to the `gen_doc` function along with their default values:
+This is the full schema of properties you can pass to the `generate_document` function along with their default values:
 
 ```typst
 #let properties = (

@@ -11,7 +11,7 @@
 )
 
 // completes the user-provided properties with default values for missing fields
-#let set_properties(user_properties) = {
+#let complete_properties(user_properties) = {
   let completed_properties = (:)
   for (key, value) in properties_schema {
     completed_properties.insert(key, user_properties.at(key, default: value))
@@ -19,7 +19,7 @@
   completed_properties
 }
 
-#let gen_head(properties) = {
+#let generate_header(properties) = {
   align(center, [
     #text(size: 1.8em, font: "Baskerville", properties.title) \
     #text(size: 1.0em, font: "LT Remark", pad(properties.course))
@@ -29,7 +29,7 @@
   ])
 }
 
-#let fig(path, caption) = {
+#let img(path, caption) = {
   pad(y: 2em, [
     #figure(
       image(path, width: 100%),
@@ -52,9 +52,9 @@
   }
 }
 
-#let gen_doc(body, properties: {}) = {
+#let generate_document(body, properties: {}) = {
 
-  properties = set_properties(properties)
+  properties = complete_properties(properties)
 
   set document(
     title: properties.title,
@@ -84,6 +84,6 @@
     footer-descent: 20%
   )
 
-  gen_head(properties)
+  generate_header(properties)
   body
 }

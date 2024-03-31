@@ -1,13 +1,13 @@
 #import "@local/skolar:0.2.0": *
 
-#let meta = (
+#let my_properties = (
   title: "Projeto de Jogo: Nefthera",
   course: "Desenvolvimento de Jogos",
   course_id: "DJOI5",
   author: "Juno Takano",
 )
 
-#gen_doc(properties: meta)[
+#generate_document(properties: my_properties)[
 
   // you can override the template in here
   #set heading(numbering: "1.a")
@@ -25,7 +25,7 @@
 
   #lorem(30)
 
-  #fig("img/ocaml.svg", "Logo for the OCaml programming language")
+  #img("img/ocaml.svg", "Logo for the OCaml programming language")
 
   #lorem(30)
 
