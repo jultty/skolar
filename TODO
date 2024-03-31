@@ -1,0 +1,5 @@
+- Image paths are not resolving as expected
+- Improve spacing
+- Add background color around code blocks
+- Reduce code block font size
+- Set code block font family

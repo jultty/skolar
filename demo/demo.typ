@@ -1,19 +1,16 @@
 #import "@local/skolar:0.1.0": *
 
-// TODO replace lorem with typst's lorem function
-// TODO add spacing and background color around code blocks
-// TODO reduce code block font size
-// TODO set code block font family
-
 #let meta = (
   title: "Projeto de Jogo: Nefthera",
-  author: "Juno Takano",
   course: "Desenvolvimento de Jogos",
   course_id: "DJOI5",
-  date: datetime.today().display("[day]/[month]/[year]"),
+  author: "Juno Takano",
 )
 
 #gen_doc(properties: meta)[
+
+  // you can override the template in here
+  #set heading(numbering: "1.a")
 
   = #lorem(3)
 
@@ -33,7 +30,7 @@
   #lorem(30)
 
   #table(
-    columns: (auto, auto, auto, auto, auto),
+    columns: 5,
     inset: 8pt,
     align: center,
     [*Process*], [_*Burst*_], [*Arrival*], [_*Turnaround*_], [*Wait*],

@@ -1,3 +1,18 @@
+
+#let set_properties(properties) = {
+  let inner_props = (:)
+  inner_props.insert("title", properties.at("title", default: "Document Title"))
+  inner_props.insert("author", properties.at("author", default: "Author Name"))
+  inner_props.insert("course", properties.at("course", default: "Course Name"))
+  inner_props.insert("course_id", properties.at("course_id", default: "COURSE_ID"))
+  inner_props.insert("date", properties.at("date", default: datetime.today().display("[day]/[month]/[year]")))
+  inner_props.insert("landscape", properties.at("landscape", default: false))
+  inner_props.insert("margin_x", properties.at("margin_x", default: 2cm))
+  inner_props.insert("margin_y", properties.at("margin_y", default: 2cm))
+  inner_props.insert("paper", properties.at("paper", default: "a5"))
+  inner_props
+}
+
 #let gen_head(properties) = {
   align(center, [
     #text(size: 1.8em, font: "Baskerville", properties.title) \
@@ -33,6 +48,8 @@
 
 #let gen_doc(body, properties: {}) = {
 
+  properties = set_properties(properties)
+
   set document(
     title: properties.title,
     author: properties.author,
@@ -53,8 +70,9 @@
   show link: underline
 
   set page(
-    paper: "a5",
-    margin: (x: 2cm, y: 2cm),
+    paper: properties.paper,
+    flipped: properties.landscape,
+    margin: (x: properties.margin_x, y: properties.margin_y),
     numbering: "1",
     footer: locate(loc => pager(properties, loc)),
     footer-descent: 20%
