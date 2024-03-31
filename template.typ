@@ -1,16 +1,22 @@
+#let properties_schema = (
+  title: "Document Title",
+  author: "Author Name",
+  course: "Course Name",
+  course_id: "COURSE_ID",
+  date: datetime.today().display("[day]/[month]/[year]"),
+  landscape: false,
+  margin_x: 2cm,
+  margin_y: 2cm,
+  paper: "a5",
+)
 
-#let set_properties(properties) = {
-  let inner_props = (:)
-  inner_props.insert("title", properties.at("title", default: "Document Title"))
-  inner_props.insert("author", properties.at("author", default: "Author Name"))
-  inner_props.insert("course", properties.at("course", default: "Course Name"))
-  inner_props.insert("course_id", properties.at("course_id", default: "COURSE_ID"))
-  inner_props.insert("date", properties.at("date", default: datetime.today().display("[day]/[month]/[year]")))
-  inner_props.insert("landscape", properties.at("landscape", default: false))
-  inner_props.insert("margin_x", properties.at("margin_x", default: 2cm))
-  inner_props.insert("margin_y", properties.at("margin_y", default: 2cm))
-  inner_props.insert("paper", properties.at("paper", default: "a5"))
-  inner_props
+// completes the user-provided properties with default values for missing fields
+#let set_properties(user_properties) = {
+  let completed_properties = (:)
+  for (key, value) in properties_schema {
+    completed_properties.insert(key, user_properties.at(key, default: value))
+  }
+  completed_properties
 }
 
 #let gen_head(properties) = {
